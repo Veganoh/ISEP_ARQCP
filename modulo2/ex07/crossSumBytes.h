@@ -1,0 +1,1 @@
+short crossSumBytes(void);
