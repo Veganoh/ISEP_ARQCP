@@ -37,7 +37,7 @@ loopGrades:
 	
 	
 inc_nota:
-	incl -8(%rbp)			   # notaTemp ++
+	addl $2,-8(%rbp)			   # notaTemp ++
 	incq %r8 				   # i++
 	jmp loopGrades
 
