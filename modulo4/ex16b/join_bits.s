@@ -12,24 +12,27 @@ join_bits:
 	movq %rsp,%rbp 
 	
 	
-	movb %dl,%cl			# Coloca a pos em '%CL'
+	movl %edx,%ecx				# Iterações para '%RCX'
+	movl $1,%edx				# Máscara para '%EDX'
 	
-	movl $0xFFFFFFFF,%edx	# Coloca a mascara em '%EDX'
+	cmpl $0,%ecx				# Se o n for 0, não pode entrar no loop
+	je continuation
 	
-	
-	shll %cl,%edx			# Dá shift 'pos' shifts para a esquerda para pegar os bits da esquerda
-	shll %edx				# pos + 1
-	
-	andl %edx,%esi			# Fica com os bits de B da esquerda
-	
-	NOT %edx				# Inverte a máscara
+loop:
+	shll %edx					# Shift para a esquerda
+	incl %edx					# Preencher com um 1
 
-	andl %edx,%edi			# Fica com os bits de A da direita
+	loop loop
 	
-	orl %edi,%esi			# Junta os dois números
+continuation:
 	
-	movl %esi,%eax			# Passa para '%EAX' o valor
-
+	andl %edx,%edi		
+	notl %edx
+	andl %edx,%esi
+	
+	orl %edi,%esi
+	movl %esi,%eax
+	
 	
 	## EPILOGUE ##
 	movq %rbp,%rsp
