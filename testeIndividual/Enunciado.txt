@@ -7,7 +7,7 @@ O inteiro estava organizado da seguinte forma:
        Nota de Exame		Nota de Frequência       ID do Aluno
 <---- 1 byte e 4 bits ----><---- 1 bytes e 4 bits ----><-- 1 byte -->
 
-Por exemplo no número, 0x00F00E01 em que 00F é a nota de exame, 00E é a nota de frequência e 001 é o ID do Aluno.
+Por exemplo no número, 0x00F00E01 em que 00F é a nota de exame, 00E é a nota de frequência e 01 é o ID do Aluno.
 
 A nota é dada pela seguinte formula (Nota de Exame + Nota de Frequência)/2.
 
@@ -16,6 +16,6 @@ Depois era necessário fazer a seguinte função:
 Função -> int extremos(unsigned int* notas, int n, unsigned short *min, unsigned short *max);
 
 Esta função vai passar por todas as 'n' notas e vai returnar quantas são positivas, ou seja, maiores ou iguais a 10.
-Também deve atualizar os valores dos pointers min e max para as notas mais baixas e mais altas respetivamente.
+Também deve atualizar os valores dos pointers min e max para a notas mais baixa e mais alta respetivamente.
 
 
